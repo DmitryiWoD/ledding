@@ -1,0 +1,447 @@
+/* Сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #fff;
+  color: #111;
+  height: 100%;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 999;
+}
+
+nav.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007aff;
+}
+
+/* Секции */
+.section {
+  min-height: 100vh;
+  padding: 160px 20px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.two-columns .left,
+.two-columns .right {
+  flex: 1;
+}
+
+.left h2 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+}
+
+.left p, .left li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.image-placeholder {
+  background: #eaeaea;
+  height: 320px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 1px #ddd;
+}
+
+/* Преимущества — меняем направление */
+#features .section-content {
+  flex-direction: row-reverse;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f4f4f4;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Кнопки */
+.btn {
+  background: #007aff;
+  color: white;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #005ecb;
+}
+
+.btn.big {
+  font-size: 1.3rem;
+}
+
+/* Модалка — светлый glassmorphism */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(15px);
+}
+
+.modal-content h3 {
+  margin-bottom: 24px;
+  font-size: 1.6rem;
+  color: #111;
+}
+
+.modal-content input,
+.modal-content textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  color: #111;
+  box-shadow: inset 0 0 0 1px #ddd;
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder {
+  color: #aaa;
+}
+
+.modal-content button {
+  width: 100%;
+  background: #007aff;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+  background: #005ecb;
+}
+
+/* Уведомление */
+.notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0077ff;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideInOut 3s ease forwards;
+}
+
+@keyframes slideInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+
+/* Тёмная тема — уведомление */
+body.dark .notification {
+  background: #1e90ff;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .section-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+.btn.small {
+  padding: 6px 12px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+}
+/* === Тёмная тема для всего сайта === */
+body.dark {
+  background-color: #121212 !important;
+  color: #eee !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+body.dark header {
+  background: rgba(18, 18, 18, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #eee !important;
+}
+
+/* Логотип и навигация */
+body.dark .logo,
+body.dark .nav-links a {
+  color: #eee !important;
+  transition: color 0.3s ease;
+}
+
+body.dark .nav-links a:hover {
+  color: #1e90ff !important;
+}
+
+/* Секции */
+body.dark .section {
+  background-color: transparent !important;
+  color: #ddd !important;
+}
+
+/* Контент секций */
+body.dark .section-content {
+  color: #ddd !important;
+}
+
+/* Заглушки изображений */
+body.dark .image-placeholder {
+  background-color: #333 !important;
+  box-shadow: inset 0 0 0 1px #555 !important;
+}
+
+/* Списки */
+body.dark ul li {
+  color: #ddd !important;
+}
+
+/* Кнопки */
+body.dark .btn {
+  background-color: #1e90ff !important;
+  color: white !important;
+  transition: background-color 0.3s ease;
+}
+
+body.dark .btn:hover {
+  background-color: #005ecb !important;
+}
+
+/* Футер */
+body.dark footer {
+  background-color: #1a1a1a !important;
+  color: #aaa !important;
+  border-top: 1px solid #333 !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Модальное окно */
+body.dark .modal-content {
+  background: rgba(30, 30, 30, 0.85) !important;
+  color: #696868 !important;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Поля ввода в модалке */
+body.dark .modal-content input,
+body.dark .modal-content textarea {
+  background: rgba(50, 50, 50, 0.9) !important;
+  color: #eee !important;
+  box-shadow: inset 0 0 0 1px #393939 !important;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Кнопка в модалке */
+body.dark .modal-content button {
+  background: #1e90ff !important;
+  transition: background 0.3s ease;
+}
+
+body.dark .modal-content button:hover {
+  background: #0062cc !important;
+}
+
+/* Уведомление */
+body.dark .notification {
+  background: #1e90ff !important;
+  transition: background 0.3s ease;
+}
+
+/* === Специально для блока Преимущества (#features) === */
+body.dark #features {
+  background-color: #333232 !important;
+  color: #ddd !important;
+}
+
+body.dark #features .section-content {
+  color: #ddd !important;
+}
+
+body.dark #features .left,
+body.dark #features .right {
+  color: #ddd !important;
+}
+
+body.dark #features .image-placeholder {
+  background-color: #272727 !important;
+  box-shadow: inset 0 0 0 1px #555 !important;
+}
+
+/* === Специально для блока Контакты (#contact) === */
+body.dark #contact {
+  background-color: #1a1a1a !important;
+  color: #ddd !important;
+}
+
+body.dark #contact .section-content {
+  color: #ddd !important;
+}
+
+body.dark #contact .left,
+body.dark #contact .right {
+  color: #ddd !important;
+}
+
+body.dark #contact .image-placeholder {
+  background-color: #333 !important;
+  box-shadow: inset 0 0 0 1px #555 !important;
+}
+#theme-toggle {
+  font-size: 1rem;
+  padding: 8px 14px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  margin-left: 20px;
+}
+
+#theme-toggle:hover {
+  background: #d0d0d0;
+}
+
+body.dark #theme-toggle {
+  background: #2a2a2a;
+  color: #f0f0f0;
+}
+
+body.dark #theme-toggle:hover {
+  background: #3a3a3a;
+}
+/* Темная модалка */
+body.dark .modal-content {
+  background: rgba(20, 20, 20, 0.95) !important;
+  backdrop-filter: none !important;
+  color: #ddd !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Тёмное поле ввода */
+body.dark .modal-content input,
+body.dark .modal-content textarea {
+  background: #2a2a2a !important;
+  color: #eee !important;
+  border: 1px solid #444;
+}
+
