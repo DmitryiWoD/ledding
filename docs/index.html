@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brix</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <div class="logo">Brix</div>
+      <ul class="nav-links">
+        <li><a href="#about">Про нас</a></li>
+        <li><a href="#features">Переваги</a></li>
+        <li><a href="#contact">Контактна інформація</a></li>
+      </ul>
+        <button id="theme-toggle" aria-label="Переключить тему" class="btn small">🌙</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="section-content two-columns">
+        <div class="left">
+          <h2>Про нас</h2>
+          <p>Ми створюємо сучасні сайти. Швидко, красиво і з адаптацією під всі пристрої.</p>
+        </div>
+        <div class="right image-placeholder">
+          <!-- Под фотку -->
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section dark">
+      <div class="section-content two-columns">
+        <div class="left">
+          <h2>Переваги</h2>
+          <ul>
+            <li>⚡ Швидкість розробки</li>
+            <li>📱 Повний адаптив</li>
+            <li>🎨 Сучасний дизайн</li>
+          </ul>
+        </div>
+        <div class="right image-placeholder">
+          <!-- Под фотку -->
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-content two-columns">
+        <div class="left">
+          <h2>Контактна інформація</h2>
+          <p>📍 Київ, Укрїна</p>
+          <p>✉️ you@example.com</p>
+          <p>📞 +38 (099) 123-45-67</p>
+        </div>
+        <div class="right">
+          <button class="btn big" onclick="openModal()">Залишити заявку</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Brix by dimedrol. Всі права захищені</p>
+  </footer>
+
+  <!-- Модалка -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3>Заявка</h3>
+      <input type="text" placeholder="Ваше ім'я" />
+      <input type="tel" placeholder="Номер телефону" />
+      <textarea rows="4" placeholder="Ваше звернення"></textarea>
+      <button onclick="closeModal()">Відправити</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
