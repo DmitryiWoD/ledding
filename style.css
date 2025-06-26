@@ -1,4 +1,38 @@
-/* Сброс */
+/* === CSS Variables === */
+:root {
+  --color-bg-light: #fff;
+  --color-bg-dark: #121212;
+  --color-text-light: #111;
+  --color-text-dark: #eee;
+
+  --color-primary: #007aff; /* Цвет кнопки "Залишити заявку" */
+  --color-primary-hover: #005ecb;
+
+  --color-footer-bg: #f4f4f4;
+  --color-footer-text: #555;
+  --color-footer-border: #e0e0e0;
+
+  --color-modal-bg-light: rgba(255, 255, 255, 0.6);
+  --color-modal-bg-dark: rgba(30, 30, 30, 0.85);
+
+  --color-modal-border-light: rgba(0, 0, 0, 0.05);
+  --color-modal-border-dark: rgba(255, 255, 255, 0.15);
+
+  /* Колір блоку "Переваги" в світлій темі — як кнопка */
+  --color-features-bg-light: var(--color-primary);
+  --color-features-text-light: #fff;
+
+  /* Колір блоку "Переваги" в темній темі — темно-сірий, приємний */
+  --color-features-bg-dark: #222222;
+  --color-features-text-dark: #ddd;
+
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+
+  --font-family: 'Inter', sans-serif;
+}
+
+/* === Скидання стилів / Базові стилі === */
 * {
   margin: 0;
   padding: 0;
@@ -6,14 +40,15 @@
 }
 
 html, body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-family);
   scroll-behavior: smooth;
-  background-color: #fff;
-  color: #111;
+  background-color: var(--color-bg-light);
+  color: var(--color-text-light);
   height: 100%;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Header */
+/* === Хедер === */
 header {
   position: fixed;
   top: 0;
@@ -22,6 +57,7 @@ header {
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 1px solid rgba(0,0,0,0.05);
   z-index: 999;
+  transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
 }
 
 nav.container {
@@ -36,6 +72,8 @@ nav.container {
 .logo {
   font-size: 1.6rem;
   font-weight: 600;
+  color: var(--color-text-light);
+  transition: color var(--transition-speed) ease;
 }
 
 .nav-links {
@@ -46,23 +84,43 @@ nav.container {
 
 .nav-links a {
   text-decoration: none;
-  color: #111;
+  color: var(--color-text-light);
   font-weight: 500;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  transition: color var(--transition-speed) ease;
 }
 
-.nav-links a:hover {
-  color: #007aff;
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--color-primary);
+  outline: none;
 }
 
-/* Секции */
+#theme-toggle {
+  font-size: 1rem;
+  padding: 8px 14px;
+  background: #e0e0e0;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+  margin-left: 20px;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus-visible {
+  background: #d0d0d0;
+  outline: none;
+}
+
+/* === Секції === */
 .section {
   min-height: 100vh;
   padding: 160px 20px 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .section-content {
@@ -82,9 +140,11 @@ nav.container {
 .left h2 {
   font-size: 2.2rem;
   margin-bottom: 24px;
+  color: inherit;
 }
 
-.left p, .left li {
+.left p,
+.left li {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #444;
@@ -102,42 +162,69 @@ ul {
   box-shadow: inset 0 0 0 1px #ddd;
 }
 
-/* Преимущества — меняем направление */
-#features .section-content {
-  flex-direction: row-reverse;
+/* === Блок "Переваги" (#features) === */
+/* Світла тема — синій як кнопка */
+#features {
+  background-color: var(--color-features-bg-light);
+  color: var(--color-features-text-light);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Footer */
+#features .section-content {
+  flex-direction: row-reverse;
+  color: inherit;
+}
+
+#features .left,
+#features .right {
+  color: inherit;
+}
+
+#features .image-placeholder {
+  background-color: #005ecb;
+  box-shadow: inset 0 0 0 1px #0047b3;
+}
+
+/* === Футер === */
 footer {
   text-align: center;
   padding: 40px 20px;
   font-size: 0.9rem;
-  color: #555;
-  background-color: #f4f4f4;
-  border-top: 1px solid #e0e0e0;
+  color: var(--color-footer-text);
+  background-color: var(--color-footer-bg);
+  border-top: 1px solid var(--color-footer-border);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* Кнопки */
+/* === Кнопки === */
 .btn {
-  background: #007aff;
+  background: var(--color-primary);
   color: white;
   padding: 14px 32px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
 }
 
-.btn:hover {
-  background: #005ecb;
+.btn:hover,
+.btn:focus-visible {
+  background: var(--color-primary-hover);
+  outline: none;
 }
 
 .btn.big {
   font-size: 1.3rem;
 }
 
-/* Модалка — светлый glassmorphism */
+.btn.small {
+  padding: 6px 12px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+}
+
+/* === Модалка === */
 .modal {
   position: fixed;
   inset: 0;
@@ -147,23 +234,25 @@ footer {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
   z-index: 1000;
+  transition: background var(--transition-speed) ease;
 }
 
 .modal-content {
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--color-modal-bg-light);
   border-radius: 20px;
   padding: 40px;
   width: 90%;
   max-width: 420px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-modal-border-light);
   backdrop-filter: blur(15px);
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .modal-content h3 {
   margin-bottom: 24px;
   font-size: 1.6rem;
-  color: #111;
+  color: var(--color-text-light);
 }
 
 .modal-content input,
@@ -172,11 +261,12 @@ footer {
   padding: 14px;
   margin-bottom: 20px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   background: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
-  color: #111;
+  color: var(--color-text-light);
   box-shadow: inset 0 0 0 1px #ddd;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 .modal-content input::placeholder,
@@ -186,26 +276,28 @@ footer {
 
 .modal-content button {
   width: 100%;
-  background: #007aff;
+  background: var(--color-primary);
   color: white;
   padding: 14px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color var(--transition-speed) ease;
 }
 
-.modal-content button:hover {
-  background: #005ecb;
+.modal-content button:hover,
+.modal-content button:focus-visible {
+  background: var(--color-primary-hover);
+  outline: none;
 }
 
-/* Уведомление */
+/* === Повідомлення === */
 .notification {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: #0077ff;
+  background: var(--color-primary);
   color: white;
   padding: 15px 25px;
   border-radius: 8px;
@@ -237,19 +329,131 @@ footer {
   }
 }
 
+/* === Темна тема - перевизначення змінних === */
+body.dark {
+  --color-bg-light: var(--color-bg-dark);
+  --color-text-light: var(--color-text-dark);
 
-/* Тёмная тема — уведомление */
+  --color-footer-bg: #1a1a1a;
+  --color-footer-text: #aaa;
+  --color-footer-border: #333;
+
+  --color-modal-bg-light: var(--color-modal-bg-dark);
+  --color-modal-border-light: var(--color-modal-border-dark);
+  
+  --color-primary: #1e90ff;
+  --color-primary-hover: #0062cc;
+  
+  /* Тепер блок "Переваги" - темно-сірий, приємний для очей */
+  --color-features-bg-light: var(--color-features-bg-dark);
+  --color-features-text-light: var(--color-features-text-dark);
+}
+
+/* Хедер в темній темі */
+body.dark header {
+  background: rgba(18, 18, 18, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-dark);
+}
+
+/* Логотип і навігація в темній темі */
+body.dark .logo,
+body.dark .nav-links a {
+  color: var(--color-text-dark);
+}
+
+body.dark .nav-links a:hover,
+body.dark .nav-links a:focus-visible {
+  color: var(--color-primary);
+}
+
+/* Секції в темній темі */
+body.dark .section,
+body.dark .section-content,
+body.dark .left p,
+body.dark .left li,
+body.dark ul li {
+  color: #ddd;
+}
+
+body.dark .image-placeholder {
+  background-color: #333;
+  box-shadow: inset 0 0 0 1px #555;
+}
+
+/* Кнопки в темній темі */
+body.dark .btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+body.dark .btn:hover,
+body.dark .btn:focus-visible {
+  background-color: var(--color-primary-hover);
+}
+
+/* Футер в темній темі */
+body.dark footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  border-top: 1px solid var(--color-footer-border);
+}
+
+/* Модалка в темній темі */
+body.dark .modal-content {
+  background: var(--color-modal-bg-light);
+  color: #696868;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--color-modal-border-light);
+}
+
+body.dark .modal-content input,
+body.dark .modal-content textarea {
+  background: rgba(50, 50, 50, 0.9);
+  color: var(--color-text-dark);
+  box-shadow: inset 0 0 0 1px #393939;
+  border: 1px solid #444;
+}
+
+/* Кнопка в модалці в темній темі */
+body.dark .modal-content button {
+  background: var(--color-primary);
+}
+
+body.dark .modal-content button:hover,
+body.dark .modal-content button:focus-visible {
+  background: var(--color-primary-hover);
+}
+
+/* Повідомлення в темній темі */
 body.dark .notification {
-  background: #1e90ff;
+  background: var(--color-primary);
+  transition: background var(--transition-speed) ease;
 }
 
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Блок "Переваги" в темній темі */
+body.dark #features {
+  background-color: var(--color-features-bg-light);
+  color: var(--color-features-text-light);
 }
 
-/* Адаптив */
+body.dark #features .image-placeholder {
+  background-color: #1a1a1a;
+  box-shadow: inset 0 0 0 1px #333;
+}
+
+/* Блок "Контакти" в темній темі */
+body.dark #contact {
+  background-color: #1a1a1a;
+  color: #ddd;
+}
+
+body.dark #contact .image-placeholder {
+  background-color: #333;
+  box-shadow: inset 0 0 0 1px #555;
+}
+
+/* === Адаптивність === */
 @media (max-width: 768px) {
   .section-content {
     flex-direction: column;
@@ -262,186 +466,3 @@ body.dark .notification {
     gap: 16px;
   }
 }
-.btn.small {
-  padding: 6px 12px;
-  font-size: 1.1rem;
-  border-radius: 8px;
-}
-/* === Тёмная тема для всего сайта === */
-body.dark {
-  background-color: #121212 !important;
-  color: #eee !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Header */
-body.dark header {
-  background: rgba(18, 18, 18, 0.8) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #eee !important;
-}
-
-/* Логотип и навигация */
-body.dark .logo,
-body.dark .nav-links a {
-  color: #eee !important;
-  transition: color 0.3s ease;
-}
-
-body.dark .nav-links a:hover {
-  color: #1e90ff !important;
-}
-
-/* Секции */
-body.dark .section {
-  background-color: transparent !important;
-  color: #ddd !important;
-}
-
-/* Контент секций */
-body.dark .section-content {
-  color: #ddd !important;
-}
-
-/* Заглушки изображений */
-body.dark .image-placeholder {
-  background-color: #333 !important;
-  box-shadow: inset 0 0 0 1px #555 !important;
-}
-
-/* Списки */
-body.dark ul li {
-  color: #ddd !important;
-}
-
-/* Кнопки */
-body.dark .btn {
-  background-color: #1e90ff !important;
-  color: white !important;
-  transition: background-color 0.3s ease;
-}
-
-body.dark .btn:hover {
-  background-color: #005ecb !important;
-}
-
-/* Футер */
-body.dark footer {
-  background-color: #1a1a1a !important;
-  color: #aaa !important;
-  border-top: 1px solid #333 !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Модальное окно */
-body.dark .modal-content {
-  background: rgba(30, 30, 30, 0.85) !important;
-  color: #696868 !important;
-  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Поля ввода в модалке */
-body.dark .modal-content input,
-body.dark .modal-content textarea {
-  background: rgba(50, 50, 50, 0.9) !important;
-  color: #eee !important;
-  box-shadow: inset 0 0 0 1px #393939 !important;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Кнопка в модалке */
-body.dark .modal-content button {
-  background: #1e90ff !important;
-  transition: background 0.3s ease;
-}
-
-body.dark .modal-content button:hover {
-  background: #0062cc !important;
-}
-
-/* Уведомление */
-body.dark .notification {
-  background: #1e90ff !important;
-  transition: background 0.3s ease;
-}
-
-/* === Специально для блока Преимущества (#features) === */
-body.dark #features {
-  background-color: #333232 !important;
-  color: #ddd !important;
-}
-
-body.dark #features .section-content {
-  color: #ddd !important;
-}
-
-body.dark #features .left,
-body.dark #features .right {
-  color: #ddd !important;
-}
-
-body.dark #features .image-placeholder {
-  background-color: #272727 !important;
-  box-shadow: inset 0 0 0 1px #555 !important;
-}
-
-/* === Специально для блока Контакты (#contact) === */
-body.dark #contact {
-  background-color: #1a1a1a !important;
-  color: #ddd !important;
-}
-
-body.dark #contact .section-content {
-  color: #ddd !important;
-}
-
-body.dark #contact .left,
-body.dark #contact .right {
-  color: #ddd !important;
-}
-
-body.dark #contact .image-placeholder {
-  background-color: #333 !important;
-  box-shadow: inset 0 0 0 1px #555 !important;
-}
-#theme-toggle {
-  font-size: 1rem;
-  padding: 8px 14px;
-  background: #e0e0e0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-  margin-left: 20px;
-}
-
-#theme-toggle:hover {
-  background: #d0d0d0;
-}
-
-body.dark #theme-toggle {
-  background: #2a2a2a;
-  color: #f0f0f0;
-}
-
-body.dark #theme-toggle:hover {
-  background: #3a3a3a;
-}
-/* Темная модалка */
-body.dark .modal-content {
-  background: rgba(20, 20, 20, 0.95) !important;
-  backdrop-filter: none !important;
-  color: #ddd !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Тёмное поле ввода */
-body.dark .modal-content input,
-body.dark .modal-content textarea {
-  background: #2a2a2a !important;
-  color: #eee !important;
-  border: 1px solid #444;
-}
-
