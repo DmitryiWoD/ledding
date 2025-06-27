@@ -431,6 +431,11 @@ body.dark .notification {
   background: var(--color-primary);
   transition: background var(--transition-speed) ease;
 }
+body.dark #about {
+  background-color: var(--color-bg-dark, #111);
+  color: var(--color-text-dark, #ddd);
+}
+
 
 /* Блок "Переваги" в темній темі */
 body.dark #features {
