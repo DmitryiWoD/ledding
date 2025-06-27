@@ -46,6 +46,7 @@ html, body {
   color: var(--color-text-light);
   height: 100%;
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  overflow-x: hidden;
 }
 
 /* === Хедер === */
