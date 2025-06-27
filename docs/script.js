@@ -60,9 +60,29 @@ function showNotification(message) {
 
 // Клік на кнопку "Відправити" в модалці
 document.querySelector('.modal-content button').addEventListener('click', () => {
+  const name = document.querySelector('.modal-content input[type="text"]').value.trim();
+  const phone = document.querySelector('.modal-content input[type="tel"]').value.trim();
+  const message = document.querySelector('.modal-content textarea').value.trim();
+
+  // проверка имени
+  if (name.length < 2) {
+    showNotification("Ім'я повинно містити мінімум 2 символи");
+    return;
+  }
+
+  // проверка телефона по украинскому шаблону
+  const phoneRegex = /^\+380\d{9}$/;
+  if (!phoneRegex.test(phone)) {
+    showNotification("Введіть номер телефону у форматі +380XXXXXXXXX");
+    return;
+  }
+
+  // все ок
   closeModal();
   showNotification("Заявка успішно відправлена");
 });
+
+
 
 
 // === Плавна прокрутка по навігації ===

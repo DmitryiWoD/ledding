@@ -14,9 +14,9 @@
       <ul class="nav-links">
         <li><a href="#about">Про нас</a></li>
         <li><a href="#features">Переваги</a></li>
-        <li><a href="#contact">Контактна інформація</a></li>
+        <li><a href="#contact">Контакти</a></li>
       </ul>
-        <button id="theme-toggle" aria-label="Переключить тему" class="btn small">🌙</button>
+      <button id="theme-toggle" aria-label="Перемкнути тему" class="btn small">🌙</button>
     </nav>
   </header>
 
@@ -28,7 +28,7 @@
           <p>Ми створюємо сучасні сайти. Швидко, красиво і з адаптацією під всі пристрої.</p>
         </div>
         <div class="right image-placeholder">
-          <!-- Под фотку -->
+          <!-- 📸 Тут можна вставити зображення -->
         </div>
       </div>
     </section>
@@ -44,7 +44,7 @@
           </ul>
         </div>
         <div class="right image-placeholder">
-          <!-- Под фотку -->
+          <!-- 📸 Тут можна вставити зображення -->
         </div>
       </div>
     </section>
@@ -53,7 +53,7 @@
       <div class="section-content two-columns">
         <div class="left">
           <h2>Контактна інформація</h2>
-          <p>📍 Київ, Укрїна</p>
+          <p>📍 Київ, Україна</p>
           <p>✉️ you@example.com</p>
           <p>📞 +38 (099) 123-45-67</p>
         </div>
@@ -68,14 +68,16 @@
     <p>&copy; 2025 Brix by dimedrol. Всі права захищені</p>
   </footer>
 
-  <!-- Модалка -->
+  <!-- 📨 Модальне вікно для заявки -->
   <div class="modal" id="modal">
     <div class="modal-content">
       <h3>Заявка</h3>
-      <input type="text" placeholder="Ваше ім'я" />
-      <input type="tel" placeholder="Номер телефону" />
-      <textarea rows="4" placeholder="Ваше звернення"></textarea>
-      <button onclick="closeModal()">Відправити</button>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Ваше ім'я" required minlength="2" />
+        <input type="tel" name="phone" placeholder="Номер телефону" pattern="\\+?\\d{10,15}" required />
+        <textarea name="message" rows="4" placeholder="Ваше звернення" required minlength="5"></textarea>
+        <button type="submit">Відправити</button>
+      </form>
     </div>
   </div>
 
