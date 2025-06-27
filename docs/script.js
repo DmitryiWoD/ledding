@@ -89,7 +89,8 @@ document.querySelector('.modal-content button').addEventListener('click', () => 
 
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', e => {
-    e.preventDefault(); 
+   // e.preventDefault();
+ 
     const targetId = link.getAttribute('href').slice(1); 
     const target = document.getElementById(targetId); 
     if (!target) return;
