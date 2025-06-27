@@ -18,7 +18,7 @@
 
 ## Посилання на демо
 
-[GitHub Pages — https://dmitryiwod.github.io/ledding](https://dmitryiwod.github.io/ledding)
+[GitHub Pages — https://dmitryiwod.github.io/portfolio/](https://dmitryiwod.github.io/portfolio/)
 
 Цей проект — моя перша спроба зробити повноцінний сайт. Частково я використовував готові рішення, але адаптував і дописував під себе, щоб все працювало і мало сучасний, інтуїтивно зрозумілий користувачу вигляд) 
 
